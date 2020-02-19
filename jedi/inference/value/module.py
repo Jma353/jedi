@@ -240,7 +240,7 @@ class ModuleValue(ModuleMixin, TreeValue):
             # It is a namespace, now try to find the rest of the
             # modules on sys_path or whatever the search_path is.
             paths = set()
-            for s in self.inference_state.get_sys_path():
+            for s in self.inference_state.get_sys_path(add_init_paths=True):
                 other = os.path.join(s, self.name.string_name)
                 if os.path.isdir(other):
                     paths.add(other)
